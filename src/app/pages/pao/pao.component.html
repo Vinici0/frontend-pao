@@ -1,0 +1,134 @@
+<div class="shadow-lg p-2 my-4">
+  <h1 class="text-center">PAO</h1>
+  <form [formGroup]="paoForm" (ngSubmit)="crearPao()">
+    <div class="mb-3">
+      <label for="exampleInputODS" class="form-label">ODS</label>
+      <input
+        type="text"
+        class="form-control"
+        id="exampleInputODS"
+        aria-describedby="odsHelp"
+        formControlName="ODS"
+      />
+      <div id="odsHelp" class="form-text">Ingrese el ODS</div>
+    </div>
+    <div class="mb-3">
+      <label for="exampleInputEje" class="form-label">Eje</label>
+      <input
+        type="text"
+        class="form-control"
+        id="exampleInputEje"
+        aria-describedby="ejeHelp"
+        formControlName="EJE"
+      />
+      <div id="ejeHelp" class="form-text">Ingrese el eje</div>
+    </div>
+    <div class="mb-3">
+      <label for="exampleInputObjetivosNacionales" class="form-label">Objetivos Nacionales</label>
+      <input
+        type="text"
+        class="form-control"
+        id="exampleInputObjetivosNacionales"
+        aria-describedby="objetivosNacionalesHelp"
+        formControlName="OBJETIVOS_NACIONALES"
+      />
+      <div id="objetivosNacionalesHelp" class="form-text">Ingrese los objetivos nacionales</div>
+    </div>
+    <div class="mb-3">
+      <label for="exampleInputPoliticas" class="form-label">Políticas</label>
+      <input
+        type="text"
+        class="form-control"
+        id="exampleInputPoliticas"
+        aria-describedby="politicasHelp"
+        formControlName="POLITICAS"
+      />
+      <div id="politicasHelp" class="form-text">Ingrese las políticas</div>
+    </div>
+    <div class="mb-3">
+      <label for="exampleInputMetas" class="form-label">Metas</label>
+      <input
+        type="number"
+        class="form-control"
+        id="exampleInputMetas"
+        aria-describedby="metasHelp"
+        formControlName="METAS"
+      />
+      <div id="metasHelp" class="form-text">Ingrese las metas</div>
+    </div>
+    <div class="mb-3">
+      <label for="exampleInputProgramaNacional" class="form-label">Programa Nacional</label>
+      <input
+        type="text"
+        class="form-control"
+        id="exampleInputProgramaNacional"
+        aria-describedby="programaNacionalHelp"
+        formControlName="PROGRAMA_NACIONAL"
+      />
+      <div id="programaNacionalHelp" class="form-text">Ingrese el programa nacional</div>
+    </div>
+    <div class="mb-3">
+      <label for="exampleInputObjetivosEstrategicosPedi" class="form-label">Objetivos Estratégicos PEDI</label>
+      <input
+        type="text"
+        class="form-control"
+        id="exampleInputObjetivosEstrategicosPedi"
+        aria-describedby="objetivosEstrategicosPediHelp"
+        formControlName="OBJETIVOS_ESTRATÉGICOS_PEDI"
+      />
+      <div id="objetivosEstrategicosPediHelp" class="form-text">Ingrese los objetivos estratégicos PEDI</div>
+    </div>
+    <div class="mb-3">
+      <label for="exampleInputObjetivosOperativos" class="form-label">Objetivos Operativos</label>
+      <textarea
+        class="form-control"
+        id="exampleInputObjetivosOperativos"
+        rows="5"
+        formControlName="OBJETIVOS_OPERATIVOS"
+      ></textarea>
+      <div id="objetivosOperativosHelp" class="form-text">Ingrese los objetivos operativos</div>
+    </div>
+    <button type="submit" class="btn btn-success w-100">Agregar</button>
+  </form>
+</div>
+
+<table class="table shadow-lg p-2 my-4">
+  <thead class="table-light">
+    <tr>
+      <th scope="col">#</th>
+      <th scope="col">ODS</th>
+      <th scope="col">Eje</th>
+      <th scope="col">Objetivos Nacionales</th>
+      <th scope="col">Políticas</th>
+      <th scope="col">Metas</th>
+      <th scope="col">Programa Nacional</th>
+      <th scope="col">Objetivos Estratégicos PEDI</th>
+      <th scope="col">Objetivos Operativos</th>
+      <th scope="col" class="text-center">Acciones</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let pao of paos; let i = index">
+      <th scope="row">{{ i + 1 }}</th>
+      <td>{{ pao.ODS }}</td>
+      <td>{{ pao.EJE }}</td>
+      <td>{{ pao.OBJETIVOS_NACIONALES }}</td>
+      <td>{{ pao.POLITICAS }}</td>
+      <td>{{ pao.METAS }}</td>
+      <td>{{ pao.PROGRAMA_NACIONAL }}</td>
+      <td>{{ pao.OBJETIVOS_ESTRATEGICOS_PEDI }}</td>
+      <td>{{ pao.OBJETIVOS_OPERATIVOS }}</td>
+      <td class="text-center">
+        <button (click)="selectPao(pao)" class="btn btn-success mx-2">
+          <i class="bi bi-eye"></i>
+        </button>
+        <button (click)="editarPao(pao)" class="btn btn-primary mx-2">
+          Editar
+        </button>
+        <button (click)="eliminarPaoModal(pao)" class="btn btn-danger mx-2">
+          Eliminar
+        </button>
+      </td>
+    </tr>
+  </tbody>
+</table>

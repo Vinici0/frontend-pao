@@ -1,0 +1,105 @@
+<div class="shadow-lg p-2 my-4">
+  <h1 class="text-center">PROY</h1>
+  <form [formGroup]="proyForm" (ngSubmit)="crearProy()">
+    <div class="mb-3">
+      <label for="codigo" class="form-label">Código</label>
+      <input
+        type="text"
+        class="form-control"
+        id="codigo"
+        formControlName="CODIGO"
+      />
+      <div class="form-text">Ingrese el código del PROY</div>
+    </div>
+    <div class="mb-3">
+      <label for="centroGestor" class="form-label">Centro de Gestor</label>
+      <input
+        type="text"
+        class="form-control"
+        id="centroGestor"
+        formControlName="CENTRO_GESTOR"
+      />
+      <div class="form-text">Ingrese el centro de gestor</div>
+    </div>
+    <div class="mb-3">
+      <label for="productoInstitucional" class="form-label">Producto Institucional</label>
+      <input
+        type="text"
+        class="form-control"
+        id="productoInstitucional"
+        formControlName="PRODUCTO_INSTITUCIONAL"
+      />
+    </div>
+    <div class="mb-3">
+      <label for="descripcionActividad" class="form-label">Descripción de la Actividad/Proyecto</label>
+      <textarea
+        class="form-control"
+        id="descripcionActividad"
+        formControlName="DESCRIPCION_ACTIVIDAD_PROYECTO"
+        rows="5"
+      ></textarea>
+    </div>
+    <div class="mb-3">
+      <label for="periodicidad" class="form-label">Periodicidad</label>
+      <input
+        type="text"
+        class="form-control"
+        id="periodicidad"
+        formControlName="PERIODICIDAD"
+      />
+    </div>
+    <div class="mb-3">
+      <label for="mediosVerificacion" class="form-label">Medios de Verificación</label>
+      <input
+        type="text"
+        class="form-control"
+        id="mediosVerificacion"
+        formControlName="MEDIOS_DE_VERIFICACION"
+      />
+    </div>
+    <!-- <div class="mb-3">
+      <label for="ods" class="form-label">ODS</label>
+      <select class="form-select" id="ods" formControlName="ODS">
+        <option value="" disabled selected>Selecciona un ODS</option>
+        <option *ngFor="let ods of paos" [value]="ods">{{ ods.OBJETIVOS_NACIONALES}}</option>
+      </select>
+      <div class="form-text">Selecciona el ODS relacionado con el PROY</div>
+    </div> -->
+    <button type="submit" class="btn btn-success w-100">Agregar</button>
+  </form>
+</div>
+
+<table class="table shadow-lg p-2 my-4">
+  <thead class="table-light">
+    <tr>
+      <th scope="col">#</th>
+      <th scope="col">Producto Institucional</th>
+      <th scope="col">Descripción Actividad/Proyecto</th>
+      <th scope="col">Periodicidad</th>
+      <th scope="col">Medios de Verificación</th>
+      <th scope="col">POA</th>
+      <th scope="col" class="text-center">Acciones</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let item of proy; let i = index">
+      <th scope="row">{{ i + 1 }}</th>
+      <td>{{ item.PRODUCTO_INSTITUCIONAL }}</td>
+      <td>{{ item.DESCRIPCION_ACTIVIDAD_PROYECTO }}</td>
+      <td>{{ item.PERIODICIDAD }}</td>
+      <td>{{ item.MEDIOS_DE_VERIFICACION }}</td>
+      <td>Valor de OBJETIVOS_NACIONALES</td>
+      <td class="text-center">
+        <!-- <button (click)="selectProy(item)" class="btn btn-success mx-2">
+          <i class="bi bi-eye"></i>
+        </button> -->
+        <button (click)="editarProy(item)" class="btn btn-primary mx-2">
+          Editar
+        </button>
+        <button (click)="eliminarProyModal(item)" class="btn btn-danger mx-2">
+          Eliminar
+        </button>
+      </td>
+    </tr>
+  </tbody>
+</table>
